@@ -1,5 +1,6 @@
 class GreeterScreen {
 	constructor() {
+		this._localStorage = window.localStorage;
 		this._screenGreeter = document.querySelector('#screen-greeter');
 		this._passwordInput = document.querySelector('#input-password');
 		this._buttonScreenGreeter = document.querySelector('#button-greeter-screen');
@@ -7,6 +8,15 @@ class GreeterScreen {
 		this._screenGreeterVisible = true;
 		this._buttonGreeterClickEvent();
 		this._arrowIndicatorClickEvent();
+
+		this._init();
+	}
+
+	_init() {
+		const autoHideGreeter = JSON.parse(this._localStorage.getItem('autoHideGreeter')) || false;
+		if (autoHideGreeter) {
+			this._hideGreeter();
+		}
 	}
 
 	getGreeterVisibility() {

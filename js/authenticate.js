@@ -1,6 +1,7 @@
 
 class Authenticate {
 	constructor() {
+		this._localStorage = window.localStorage;
 		this._passwordBox = document.querySelector('#input-password-box');
 		this._passwordInput = document.querySelector('#input-password');
 		this._buttonAuthenticate = document.querySelector('#button-authenticate');
@@ -9,17 +10,27 @@ class Authenticate {
 		this._password = '';
 		
 		this._init();
-		this._language = new Language;		
+		this._language = new Language;
 	}
 
 	_returnRandomErrorMessages() {
+		const randomMsg = JSON.parse(this._localStorage.getItem('randomMsg')) || false;
 		const errorMessages = this._language._getErrorMessages();
-		return errorMessages[Math.floor(Math.random() * errorMessages.length)];	
+		if (randomMsg) {
+			return errorMessages[Math.floor(Math.random() * errorMessages.length)];
+		} else {
+			return errorMessages[0];
+		}
 	}
 
 	_returnRandomSuccessfulMessages() {
-		const errorMessages = this._language._getSuccessfulMessages();
-		return errorMessages[Math.floor(Math.random() * errorMessages.length)];
+		const randomMsg = JSON.parse(this._localStorage.getItem('randomMsg')) || false;
+		const successfulMessages = this._language._getSuccessfulMessages();
+		if (randomMsg) {
+			return successfulMessages[Math.floor(Math.random() * successfulMessages.length)];
+		} else {
+			return successfulMessages[0];
+		}
 	}
 
 	// Start authentication

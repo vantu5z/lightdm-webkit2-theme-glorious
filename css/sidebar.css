@@ -329,6 +329,54 @@ img.button-sidebar-item-image {
 	margin-left: 10px;
 }
 
+.label-settings-toggle {
+	margin-top: 5px;
+	display: block;
+}
+
+.toggle-parent {
+	display: flex;
+	height: 48px;
+	width: 100%;
+	max-width: 100%;
+	margin-top: 5px;
+}
+
+.sidebar-settings-toggle {
+	position: absolute;
+	display: none;
+}
+
+.toggle-parent input:checked ~ .toggle {
+	justify-content: flex-end;
+}
+
+.toggle-parent input:checked ~ .toggle:after {
+	content: "ON";
+	filter: invert();
+}
+
+.toggle-parent .toggle {
+	display: flex;
+	height: 50px;
+	width: 100%;
+	padding: 4px;
+	border-radius: 6px;
+	transition: background-color 0.15s ease-in;
+	background: var(--sidebar-elements-bg);
+}
+
+.toggle-parent .toggle:after {
+	content: "OFF";
+	display: flex;
+	width: 50%;
+	border-radius: 6px;
+	background: #00000060;
+	justify-content: center;
+	align-items: center;
+	transition: left 0.15s ease-in;
+}
+
 button.button-input {
 	width: 100%;
 	height: 48px;

@@ -66,7 +66,8 @@ class KeyEvents {
 					return;
 				}
 
-				if ((e.key === ' ') || (e.code === 'Space') || (e.code === 'NumpadEnter')) {
+				if ((e.key === ' ') || (e.code === 'Space') || (e.code === 'NumpadEnter') || (e.code === 'Enter')) {
+					e.preventDefault();
 					if (greeterScreen.getGreeterVisibility()) {
 						greeterScreen.toggleGreeter();
 						return;
@@ -92,6 +93,7 @@ class KeyEvents {
 					}
 
 					greeterScreen.toggleGreeter();
+					authenticate._authFailedRemove();
 					this._passwordInput.value = '';
 					return;
 				}

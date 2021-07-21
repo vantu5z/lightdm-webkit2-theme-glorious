@@ -13,6 +13,9 @@ class Themes {
 		this._inputBlurStrength = document.querySelector('#sidebar-settings-blur-input');
 		this._inputAnimSpeed = document.querySelector('#sidebar-settings-animation-input');
 
+		this._inputGreeter = document.querySelector('#sidebar-settings-greeter-input');
+		this._inputRandomMsg = document.querySelector('#sidebar-settings-messages-input');
+
 		this._inputLanguage = document.querySelector('#sidebar-settings-language');
 		this._init();
 	}
@@ -49,7 +52,7 @@ class Themes {
 			'background': backgroundColor,
 			'foreground': foregroundColor,
 			'blurPower': blurStrength,
-			'animSpeed': transitionSpeed 
+			'animSpeed': transitionSpeed
 		};
 		return inputFieldValues;
 	}
@@ -128,12 +131,16 @@ class Themes {
 
 	_settingsThemeApply() {
 		this._updateCSSVariables();
+		this._updateToggleVariables();
 		this._updateLanguageVariable();
 	}
 
-	_updateLanguageVariable()
-	{
-		
+	_updateToggleVariables() {
+		this._localStorage.setItem('autoHideGreeter', JSON.stringify(this._inputGreeter.checked));
+		this._localStorage.setItem('randomMsg', JSON.stringify(this._inputRandomMsg.checked));
+	}
+
+	_updateLanguageVariable() {
 		this._localStorage.setItem('Lang',this._inputLanguage.value);
 	}
 
@@ -142,6 +149,8 @@ class Themes {
 		this._localStorage.removeItem('baseColor');
 		this._localStorage.removeItem('blurStrength');
 		this._localStorage.removeItem('animSpeed');
+		this._localStorage.removeItem('autoHideGreeter');
+		this._localStorage.removeItem('randomMsg');
 		this._localStorage.removeItem('Lang');
 		this._saveOriginalDefaultCSS();
 	}
@@ -293,6 +302,13 @@ class Themes {
 		);
 	}
 
+	_processCurrentToggleValues() {
+		const autoHideGreeter = JSON.parse(this._getStorageItem('autoHideGreeter')) || false;
+		const randomMsg = JSON.parse(this._getStorageItem('randomMsg')) || false;
+		this._inputGreeter.checked = autoHideGreeter;
+		this._inputRandomMsg.checked = randomMsg;
+	}
+
 	_updateCSSColors(bgColor, fgColor, blurStrength, animSpeed) {
 		document.documentElement.style.setProperty('--global-bg', bgColor);
 		document.documentElement.style.setProperty('--global-fg', fgColor);
@@ -308,6 +324,7 @@ class Themes {
 			this._getStorageItem('animSpeed') || this._getStorageItem('origAnimSpeed')
 		);
 		this._processCurrentCSSValues();
+		this._processCurrentToggleValues();
 	}
 
 	_saveOriginalDefaultCSS() {

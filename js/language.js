@@ -108,7 +108,7 @@ class Language {
            
           }
         });
-       
+
         const InterfaceElements = {
             goodbye: document.getElementById("goodbye-message"),
             item_account: document.getElementById("sidebar-item-account"),
@@ -125,6 +125,8 @@ class Language {
             sidebar_input_foregorund: document.getElementById('sidebar-input-foregorund'),
             sidebar_input_blur: document.getElementById('sidebar-input-blur'),
             sidebar_input_animation: document.getElementById('sidebar-input-animation'),
+            sidebar_input_greeter: document.getElementById('sidebar-input-greeter'),
+            sidebar_input_messages: document.getElementById('sidebar-input-messages'),
             sidebar_input_language: document.getElementById('sidebar-input-language'),
             sidebar_input_modifier: document.getElementById('sidebar-input-modifier'),
             sidebar_input_sidebar_key: document.getElementById('sidebar-input-sidebar-key'),
@@ -145,11 +147,3 @@ class Language {
     }
 
 }
-
-
-
-
-
-
-
-
