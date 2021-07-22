@@ -48,20 +48,20 @@ class Backgrounds {
 				subdirs.push(file);
 			}
 		}
-			// Search recursively
-			if (subdirs.length && recursion < 3) {
-				recursion++;
-				for (let dir of subdirs) {
-					//let list = greeterutil.dirlist(dir);
-					let list = await this._getImages(dir);
-					//console.log(list)
+		// Search recursively
+		if (subdirs.length && recursion < 3) {
+			recursion++;
+			for (let dir of subdirs) {
+				//let list = greeterutil.dirlist(dir);
+				let list = await this._getImages(dir);
+				//console.log(list)
 
-					if (list && list.length) {
-						var toadd = await this._findImages(list);
-						images.push.apply(images, toadd);
-					}
+				if (list && list.length) {
+					var toadd = await this._findImages(list);
+					images.push.apply(images, toadd);
 				}
 			}
+		}
 		// Return array of images
 		return images;
 	}

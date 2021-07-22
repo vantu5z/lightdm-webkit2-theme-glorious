@@ -28,8 +28,7 @@ class Debug {
 			window.theme_utils.bind_this = function(context) {return context}
 		}
 
-		/* This needs to be forced in debug mode */
-		if (true) {
+		if (!window.lightdm) {
 			console.log("Debug!");
 			window.lightdm = {
 				is_authenticated: false,

@@ -19,8 +19,6 @@ class Power {
 	}
 
 	_createPowerObject() {
-		const language = new Language();
-		;
 		this._powerObject = [
 			{
 				'name': language._getPowerTranslate('shutdown', 'Shutdown','name'),

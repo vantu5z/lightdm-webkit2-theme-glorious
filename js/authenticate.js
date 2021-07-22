@@ -10,12 +10,11 @@ class Authenticate {
 		this._password = '';
 		
 		this._init();
-		this._language = new Language;
 	}
 
 	_returnRandomErrorMessages() {
 		const randomMsg = JSON.parse(this._localStorage.getItem('randomMsg')) || false;
-		const errorMessages = this._language._getErrorMessages();
+		const errorMessages = language._getErrorMessages();
 		if (randomMsg) {
 			return errorMessages[Math.floor(Math.random() * errorMessages.length)];
 		} else {
@@ -25,7 +24,7 @@ class Authenticate {
 
 	_returnRandomSuccessfulMessages() {
 		const randomMsg = JSON.parse(this._localStorage.getItem('randomMsg')) || false;
-		const successfulMessages = this._language._getSuccessfulMessages();
+		const successfulMessages = language._getSuccessfulMessages();
 		if (randomMsg) {
 			return successfulMessages[Math.floor(Math.random() * successfulMessages.length)];
 		} else {

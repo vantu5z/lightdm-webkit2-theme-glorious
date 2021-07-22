@@ -22,6 +22,9 @@ async function initGreeter() {
     console.log(msg, type);
   } );
 
+  // Instantiate language resource
+  language = new LanguageResource();
+
   // Instantiate image profile
   userProfile = new UserProfile();
 
@@ -43,6 +46,9 @@ async function initGreeter() {
   // Instantiate power settings
   power = new Power();
 
+  // Instantiate sidebar navigation
+  sidebarNavigate = new SidebarNavigate();
+
   // Instantiate sidebar
   sidebar = new Sidebar();
 
@@ -55,9 +61,6 @@ async function initGreeter() {
   // Instantiate backgrounds settings
   backgrounds = new Backgrounds();
   await backgrounds._init();
-
-  // Instantiate sidebar navigation
-  sidebarNavigate = new SidebarNavigate();
 
   // Instantiate key binds
   keyBinds = new KeyBinds();
