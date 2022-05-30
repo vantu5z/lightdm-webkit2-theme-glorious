@@ -78,6 +78,12 @@ class DateTime {
 			return `${this._daysArr[date.getDay()]}, ${this._appendZero(date.getDate())} ${language._getTranslatedItem('of','de')} ` +
 			`${this._monthsArr[date.getMonth()]} ${language._getTranslatedItem('of','de')} ${date.getFullYear()}`
 		}
+
+		if(language._language == 'ru_ru')
+		{
+			return `${this._daysArr[date.getDay()]}, ${this._appendZero(date.getDate())} ` +
+			`${this._monthsArr[date.getMonth()]} ${date.getFullYear()}`
+		}
 	}
 
 	_startClock() {
